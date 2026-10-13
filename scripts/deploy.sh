@@ -2,13 +2,7 @@
 
 set -e
 
-echo "Starting post-deployment configuration"
+systemctl restart nginx
+systemctl is-active --quiet nginx
 
-if ! systemctl is-active --quiet nginx; then
-systemctl start nginx
-fi
-
-systemctl enable nginx
-systemctl reload nginx
-
-echo "Website deployment completed successfully"
+echo "Application deployed successfully."
