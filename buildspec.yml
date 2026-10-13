@@ -1,29 +1,26 @@
 version: 0.2
 
 phases:
-install:
-commands:
-- echo "Preparing the build environment"
-
-pre_build:
-commands:
-- echo "Checking application files"
-- test -f index.html
-- test -f appspec.yml
-- test -f scripts/deploy.sh
-
-build:
-commands:
-- echo "Validating HTML file"
-- grep -q "Welcome to AWS CI/CD!" index.html
-- echo "Build and validation completed successfully"
-
-post_build:
-commands:
-- echo "Preparing deployment artifact"
+  install:
+    commands:
+      - echo "Preparing the build environment"
+  pre_build:
+    commands:
+      - echo "Checking application files"
+      - test -f index.html
+      - test -f appspec.yml
+      - test -f scripts/deploy.sh
+  build:
+    commands:
+      - echo "Validating HTML file"
+      - grep -q "Welcome to AWS CI/CD!" index.html
+      - echo "Build and validation completed successfully"
+  post_build:
+    commands:
+      - echo "Preparing deployment artifact"
 
 artifacts:
-files:
-- index.html
-- appspec.yml
-- scripts/deploy.sh
+  files:
+    - index.html
+    - appspec.yml
+    - scripts/deploy.sh
