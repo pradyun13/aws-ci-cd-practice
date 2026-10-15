@@ -1,12 +1,15 @@
 version: 0.2
 
 phases:
-  build:
+  pre_build:
     commands:
       - test -f index.html
       - test -f appspec.yml
       - test -f scripts/deploy.sh
-      - echo "Deployment files validated"
+
+  build:
+    commands:
+      - echo "Preparing deployment artifact"
 
 artifacts:
   files:
